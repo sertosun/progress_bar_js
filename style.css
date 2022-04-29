@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans&family=Press+Start+2P&family=Raleway:wght@300;400;700;800&family=Roboto:wght@400;500&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.4rem;
+  --bg-color: rgb(131, 161, 140);
+  --bg-circle: rgb(255, 255, 255);
+  --bg-circle-filled: rgb(43, 137, 154);
+  --empty-border-color: rgb(0, 0, 0);
+  --filled-border-color: rgb(0, 62, 80);
+  --text-color-filled: rgb(255, 255, 255);
+  --disabled-color: rgb(154, 154, 154);
+}
+
+body {
+  background-color: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+}
+
+.progress_container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  min-width: 320px;
+}
+
+.progress_container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 4px;
+  width: 100%;
+  background-color: var(--disabled-color);
+  z-index: -1;
+}
+/* Zweite Möglichkeit */
+/* 
+.progress_fixed {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 4px;
+    background-color: var(--disabled-color);
+    z-index: -1;
+} */
+
+.progress_line {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0%;
+  height: 4px;
+  background-color: var(--bg-circle-filled);
+  z-index: -1;
+  transition: all 500ms;
+}
+
+.circle {
+  background-color: var(--bg-circle);
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid var(--empty-border-color);
+  transition: all 500ms;
+  box-shadow: rgba(46, 240, 143, 0.2) 5px 5px, rgba(46, 240, 143, 0.2) 10px 10px,
+    rgba(46, 240, 143, 0.2) 15px 15px, rgba(46, 240, 143, 0.2) 20px 20px,
+    rgba(46, 240, 143, 0.2) 25px 25px;
+}
+
+.circle.active {
+  border: 3px solid var(--filled-border-color);
+  background-color: var(--bg-circle-filled);
+  color: var(--text-color-filled);
+}
+
+.btn {
+  padding: 0.5rem 2rem;
+  margin: 1.2rem;
+  font-size: 0.8rem;
+  font-family: inherit;
+  border-radius: 10px;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  background-color: var(--bg-circle-filled);
+  color: var(--text-color-filled);
+  transition: all 200ms;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+/* bei default ist der prev button schon deaktiviert */
+#prev {
+  background-color: var(--disabled-color);
+  cursor: not-allowed;
+}
+
+.btn:disabled {
+  background-color: var(--disabled-color);
+  cursor: not-allowed;
+}
